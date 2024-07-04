@@ -1,0 +1,49 @@
+.caja{
+    display: flex;
+    width: 100%;
+}
+
+.caja_imagen{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.caja_imagen_logo{
+    
+}
+
+.caja_texto{
+    width: 50%;
+    background-color: red;
+}
+
+.caja_resultado{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: blueviolet;
+}
+
+.caja_resultado_muneco{
+    width: 75%;
+}
+
+.caja_resultado_boton{
+    text-align: center;
+}
+
+@media (max-width: 800px){
+    .caja{
+        display: flex;
+        flex-direction: column;
+    }
+    .caja_resultado_muneco{
+        display: none;
+    }
+}
+
+@media (max-width: 420px){
+
+}
