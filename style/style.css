@@ -24,7 +24,7 @@
 .caja_imagen_logo{
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 20%;
 }
 
 .caja_texto{
@@ -36,9 +36,15 @@
     height: 80%;
 }
 
+.caja_texto_texto_intro{
+    resize: none;
+    border: none;
+    background-color: var(--color-principal);
+    width: 80%;
+}
+
 .caja_resultado{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 35%;
@@ -50,6 +56,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-top: 10%;
     width: 85%;
     height: 100%;
