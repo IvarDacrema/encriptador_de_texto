@@ -13,24 +13,35 @@
 
     </head>
     <main class="caja">
-        <img class="caja_imagen" src="assets/Logo.jpg" alt="letra a de alura">
+        <section class="caja_imagen">
+            <div class="caja_imagen_logo">
+                <img src="assets/Logo.jpg" alt="letra a de alura">
+            </div>    
+        </section>
         <section class="caja_texto">
-            <div class="caja_texto_boton">
-                <button class="caja_texto_boton_encriptar"></button>
-                <button class="caja_texto_boton_desencriptar"></button>    
+            <div class="caja_texto_texto">
+                <textarea class="caja_texto_texto_caja">Introduce el texto a Encriptar</textarea>
+            </div>
+            <div class="caja_texto_base">
+                <p class="caja_texto_base_texto">Solo letras minusculas y si acentos</p>
+                <div class="caja_texto_base_boton">
+                    <button class="caja_texto_base_boton_encriptar">Encriptar</button>
+                    <button class="caja_texto_base_boton_desencriptar">Desencriptar</button>    
+                </div>
             </div>
         </section>
         <section class="caja_resultado">
-            <p class="caja_resultado_texto">
-
-            </p>
-            <img class="caja_resultado_muneco" src="assets/Muñeco.jpg" alt="nene_lupa">
-            <p class="caja_resultado_mensaje1">
-                Ningun mensaje fue encontrado
-            </p>
-            <p class="caja_resultado_mensaje2">
-                Ingrese el texto que desea encriptar o desecriptar
-            </p>
+            <div class="caja_resultado_contenedor">
+                <img class="caja_resultado_contenedor_img" src="assets/Muñeco.jpg" alt="nene_lupa">
+                <div>
+                    <p class="caja_resultado_contenedor_msj1">
+                        Ningun mensaje fue encontrado
+                    </p>
+                    <p class="caja_resultado_contenedor_msj2">
+                        Ingrese el texto que desea encriptar o desecriptar
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
