@@ -19,10 +19,10 @@
         </section>
         <section class="caja_texto">
             <div class="caja_texto_texto">
-                <textarea class="caja_texto_texto_intro">Introduce el texto a Encriptar</textarea>
+                <textarea class="caja_texto_texto_intro" id="textoEntrada">Introduce el texto a Encriptar</textarea>
             </div>
             <div class="caja_texto_base">
-                <p class="caja_texto_base_texto"><span class="material-symbols-outlined">info</span>Solo letras minusculas y si acentos</p>
+                <p class="caja_texto_base_texto"><span class="material-symbols-outlined">info</span>Solo letras minusculas y sin acentos</p>
                 <div class="caja_texto_base_boton">
                     <button class="caja_texto_base_boton_encriptar" id="boton">Encriptar</button>
                     <button class="caja_texto_base_boton_desencriptar" id="boton">Desencriptar</button>    
@@ -32,12 +32,12 @@
         <section class="caja_resultado">
             <div class="caja_resultado_contenedor">
                 <img class="caja_resultado_contenedor_img" src="assets/Muñeco.jpg" alt="nene_lupa">
-                <div>
+                <div class="caja_resultado_contenedor_texto">
                     <p class="caja_resultado_contenedor_msj1">
-                        Ningun mensaje fue encontrado
+                        Ningún mensaje fue encontrado
                     </p>
                     <p class="caja_resultado_contenedor_msj2">
-                        Ingrese el texto que desea encriptar o desecriptar
+                        Ingrese el texto que desea encriptar o desencriptar
                     </p>
                 </div>
             </div>
@@ -46,6 +46,6 @@
     <footer>
 
     </footer>
-
+<script src="app.js"></script>
 </body>
 </html>
