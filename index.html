@@ -24,13 +24,13 @@
             <div class="caja_texto_base">
                 <p class="caja_texto_base_texto"><span class="material-symbols-outlined">info</span>Solo letras minusculas y sin acentos</p>
                 <div class="caja_texto_base_boton">
-                    <button class="caja_texto_base_boton_encriptar" id="boton">Encriptar</button>
-                    <button class="caja_texto_base_boton_desencriptar" id="boton">Desencriptar</button>    
+                    <button onclick="encriptar()" class="caja_texto_base_boton_encriptar" id="boton">Encriptar</button>
+                    <button onclick="desencriptar()" class="caja_texto_base_boton_desencriptar" id="boton">Desencriptar</button>    
                 </div>
             </div>
         </section>
         <section class="caja_resultado">
-            <div class="caja_resultado_contenedor">
+            <div class="caja_resultado_contenedor" id="caja_resultado">
                 <img class="caja_resultado_contenedor_img" src="assets/Muñeco.jpg" alt="nene_lupa">
                 <div class="caja_resultado_contenedor_texto">
                     <p class="caja_resultado_contenedor_msj1">
