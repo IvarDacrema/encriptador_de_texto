@@ -1,10 +1,10 @@
 let introduccion = document.getElementById('textoEntrada');
-let contenedorPadre = document.getElementById('contenedor_padre')
+let contenedorPadre = document.getElementById('contenedor_padre');
 let imagen = document.getElementById('id_resultado_img');
-let texto = document.getElementById('id_resultado_texto')
-let resultado = document.getElementById('contenedor_resultado')
-let cajaResultado = document.getElementsByClassName('caja_resultado_contenedor')
-const addEtiqueta = document.createElement("textarea");
+let texto = document.getElementById('id_resultado_texto');
+let resultado = document.getElementById('contenedor_resultado');
+let cajaResultado = document.getElementsByClassName('caja_resultado_contenedor');
+let addEtiqueta = document.createElement("textarea");
 let textoCopiado = "";
 let textoResultado = "";
 let controlDeEntrada = 0;
@@ -49,7 +49,7 @@ function encriptar(){
 function desencriptar(){
     //borramos el contenido del textarea
     addEtiqueta.innerHTML = "";
-    //se crea nuevo contenido para mostrar en textarea respuesta
+    //se crea nuevo contenido para mostrar en textarea respuesta desencriptada
     textoResultado = document.createTextNode(introduccion.value.replaceAll("boca", 'a'));
     //se añade a el contenido nuevo a textarea respuesta
     addEtiqueta.appendChild(textoResultado);
