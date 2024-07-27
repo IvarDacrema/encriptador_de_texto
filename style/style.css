@@ -144,6 +144,16 @@
     border: none;
 }
 
+.boton_copiar{
+    background-color: #0A3871;
+    border-radius: 10px;
+    margin-top: 2%;
+    width: 45%;
+    height: 35px;
+    border-radius: 10px;
+    border: 10px;
+}
+
 @media (max-width: 800px){
     .caja{
         display: flex;

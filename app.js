@@ -4,7 +4,8 @@ let imagen = document.getElementById('id_resultado_img');
 let texto = document.getElementById('id_resultado_texto')
 let resultado = document.getElementById('contenedor_resultado')
 let cajaResultado = document.getElementsByClassName('caja_resultado_contenedor')
-let addEtiqueta = document.createElement("textarea");
+const addEtiqueta = document.createElement("textarea");
+let textoCopiado = "";
 let textoResultado = "";
 let controlDeEntrada = 0;
 
@@ -20,13 +21,18 @@ function encriptar(){
         //añade a addEtiqueta el atributo class para poder modificarlo en el css
         addEtiqueta.setAttribute('class', 'texto_area_respuesta');
         //añade el atributo hidden a los mensajes que estan debajo de la imagen en la caja de respuesta para que no se vea a la hora de apretar el boton encriptar
-        texto.setAttribute('hidden', '');
+        //texto.setAttribute('hidden', '');
         //se crea el contenido que va a tener el textarea creado en las variables
         let contenidoRespuesta = document.createTextNode(textoResultado);
         //se le introduce el texto creado a la etiqueta textarea
         addEtiqueta.appendChild(contenidoRespuesta);
         //remplaza la imagen de la caja de respuestas con nuestro textarea con el texto encriptado
         resultado.replaceChild(addEtiqueta, imagen);
+        //añade boton
+        let addBoton = document.createElement("botton");
+        addBoton.setAttribute('class', 'boton_copiar');
+        addBoton.setAttribute('onclick', 'copiar()');
+        resultado.replaceChild(addBoton, texto);
     } 
     if(controlDeEntrada>0){
         //borramos el contenido del textarea
@@ -41,5 +47,15 @@ function encriptar(){
 }
 
 function desencriptar(){
-    
+    //borramos el contenido del textarea
+    addEtiqueta.innerHTML = "";
+    //se crea nuevo contenido para mostrar en textarea respuesta
+    textoResultado = document.createTextNode(introduccion.value.replaceAll("boca", 'a'));
+    //se añade a el contenido nuevo a textarea respuesta
+    addEtiqueta.appendChild(textoResultado);
+}
+
+function copiar(){
+    addEtiqueta.select();
+    document.execCommand('copy');
 }
