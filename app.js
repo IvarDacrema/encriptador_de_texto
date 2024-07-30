@@ -20,8 +20,6 @@ function encriptar(){
         textoResultado = introduccion.value.replaceAll("a", 'boca');
         //añade a addEtiqueta el atributo class para poder modificarlo en el css
         addEtiqueta.setAttribute('class', 'texto_area_respuesta');
-        //añade el atributo hidden a los mensajes que estan debajo de la imagen en la caja de respuesta para que no se vea a la hora de apretar el boton encriptar
-        //texto.setAttribute('hidden', '');
         //se crea el contenido que va a tener el textarea creado en las variables
         let contenidoRespuesta = document.createTextNode(textoResultado);
         //se le introduce el texto creado a la etiqueta textarea
@@ -29,9 +27,11 @@ function encriptar(){
         //remplaza la imagen de la caja de respuestas con nuestro textarea con el texto encriptado
         resultado.replaceChild(addEtiqueta, imagen);
         //añade boton
-        let addBoton = document.createElement("botton");
+        let addBoton = document.createElement("button");
         addBoton.setAttribute('class', 'boton_copiar');
+        addBoton.setAttribute('id', 'boton');
         addBoton.setAttribute('onclick', 'copiar()');
+        addBoton.innerHTML = "Copiar";
         resultado.replaceChild(addBoton, texto);
     } 
     if(controlDeEntrada>0){
@@ -56,6 +56,11 @@ function desencriptar(){
 }
 
 function copiar(){
-    addEtiqueta.select();
-    document.execCommand('copy');
+    navigator.clipboard.writeText(addEtiqueta.innerHTML)
+    .then(() => {
+        console.log('Texto copiado')
+    })
+    .catch(err => {
+        console.error('Error al copiar:', err)
+    })
 }
