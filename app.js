@@ -9,6 +9,18 @@ let textoCopiado = "";
 let textoResultado = "";
 let controlDeEntrada = 0;
 
+// Tabla de mapeo de vocales a otros caracteres
+let mapasCambio = {
+  'a': 'ai',
+  'e': 'enter',
+  'i': 'imes',
+  'o': 'ober', 
+  'u': 'ufat'
+};
+
+// Expresión regular para coincidir con todas las vocales (tanto minúsculas como mayúsculas)
+let letrasCambiar = /[aeiou]/g;
+
 function limpiar(){
     //borra el contenido de la caja donde se introduce el texto que queremos encriptar al hacer click en ella
     introduccion.innerHTML = "";
@@ -17,7 +29,10 @@ function limpiar(){
 function encriptar(){
     if(controlDeEntrada==0){
         //guarda el texto modificado con replaceAll en texto resultado
-        textoResultado = introduccion.value.replaceAll("a", 'boca');
+        textoResultado = introduccion.value.replaceAll(letrasCambiar, (match) => {
+            // Reemplazamos cada vocal según la tabla de mapeo
+            return mapasCambio[match];
+          });
         //añade a addEtiqueta el atributo class para poder modificarlo en el css
         addEtiqueta.setAttribute('class', 'texto_area_respuesta');
         //se crea el contenido que va a tener el textarea creado en las variables
