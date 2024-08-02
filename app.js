@@ -25,6 +25,7 @@ function invertirMap(map) {
     for (let [key, value] of map) {
         invertedMap.set(value, key);
     }
+    console.log(invertedMap)
     return invertedMap;
 }
 
@@ -43,6 +44,8 @@ function encriptar(){
     if(controlDeEntrada==0){
         //guarda el texto modificado con replaceAll en texto resultado
         textoResultado = introduccion.value.replaceAll(letrasCambiar, (match) => {
+            console.log(mapasCambio)
+            console.log(match)
             // Reemplazamos cada vocal según la tabla de mapeo
             return mapasCambio[match];
           });
