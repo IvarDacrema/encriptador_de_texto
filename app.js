@@ -5,32 +5,46 @@ let texto = document.getElementById('id_resultado_texto');
 let resultado = document.getElementById('contenedor_resultado');
 let cajaResultado = document.getElementsByClassName('caja_resultado_contenedor');
 let addEtiqueta = document.createElement("textarea");
+let addBoton = document.createElement("button");
 let textoCopiado = "";
 let textoResultado = "";
 let contenidoRespuesta = "";
 let controlDeEntrada = 0;
 
 // Tabla de mapeo de vocales a otros caracteres
-let mapasCambio = new Map([
-    ['a', 'ai'],
-    ['e', 'enter'],
-    ['i', 'imes'],
-    ['o', 'ober'],
-    ['u', 'ufat']
-  ]);
-
-//Funcion para invertir las llaves y valores para desencriptar
-function invertirMap(map) {
-    let invertedMap = new Map();
-    for (let [key, value] of map) {
-        invertedMap.set(value, key);
-    }
-    console.log(invertedMap)
-    return invertedMap;
+let mapasCambio = {
+    'a': 'ai',
+    'e': 'enter',
+    'i': 'imes',
+    'o': 'ober',
+    'u': 'ufat'
 }
 
-// Expresión regular para coincidir con todas las vocales
+//Tabla de mapeo de vocales con tilde
+let mapaLetrasTilde= {
+    'á': 'a',
+    'é': 'e',
+    'í': 'i',
+    'ó': 'o',
+    'ú': 'u'
+}
+
+//Funcion para invertir las llaves y valores para desencriptar
+function permutarValores(mapasCambio) {
+    let permutado = {};
+    for (let clave in mapasCambio) {
+        if (mapasCambio.hasOwnProperty(clave)) {
+            permutado[mapasCambio[clave]] = clave;
+        }
+    }
+    return permutado;
+}
+
+//Expresión regular para coincidir con todas las vocales
 let letrasCambiar = /[aeiou]/g;
+
+//Expresión regular para coincidir con todas las vocales con tilde
+let letrasTilde = /[áéíóú]/g;
 
 //Expresion para coincidir con las palabras claves
 let letrasEncriptadas = /ai|enter|imes|ober|ufat/g;
@@ -42,10 +56,13 @@ function limpiar(){
 
 function encriptar(){
     if(controlDeEntrada==0){
+        const textSinTildes = introduccion.value.replaceAll(letrasTilde, (match) => {
+            // Reemplazamos cada vocal según la tabla de mapeo
+            return mapaLetrasTilde[match];
+          });
         //guarda el texto modificado con replaceAll en texto resultado
-        textoResultado = introduccion.value.replaceAll(letrasCambiar, (match) => {
-            console.log(mapasCambio)
-            console.log(match)
+        const textoMinusculas = textSinTildes.toLowerCase();
+        textoResultado = textoMinusculas.replaceAll(letrasCambiar, (match) => {
             // Reemplazamos cada vocal según la tabla de mapeo
             return mapasCambio[match];
           });
@@ -57,12 +74,13 @@ function encriptar(){
         addEtiqueta.appendChild(contenidoRespuesta);
         //remplaza la imagen de la caja de respuestas con nuestro textarea con el texto encriptado
         resultado.replaceChild(addEtiqueta, imagen);
-        //añade boton
-        let addBoton = document.createElement("button");
+        //añado todos los atributos necesarios
         addBoton.setAttribute('class', 'boton_copiar');
         addBoton.setAttribute('id', 'boton');
         addBoton.setAttribute('onclick', 'copiar()');
+        //se edita el valor que muestra el boton
         addBoton.innerHTML = "Copiar";
+        //se muestra lo encriptado
         resultado.replaceChild(addBoton, texto);
     } 
     if(controlDeEntrada>0){
@@ -76,16 +94,18 @@ function encriptar(){
         contenidoRespuesta = document.createTextNode(textoResultado);
         //se añade a el contenido nuevo a textarea respuesta
         addEtiqueta.appendChild(contenidoRespuesta);
+        addBoton.innerHTML = "Copiar";
     }
     //suma al contador para que no vuelva a hacer el replazo de los hijos del nodo y solo haga la encriptacion
     controlDeEntrada++;
 }
 
 function desencriptar(){
+    addBoton.innerHTML = "Copiar";
     //borramos el contenido del textarea
     addEtiqueta.innerHTML = "";
     //obtenemos el mapa invertido
-    let mapaInvertido = invertirMap(mapasCambio);
+    let mapaInvertido = permutarValores(mapasCambio);
     //se crea nuevo contenido para mostrar en textarea respuesta desencriptada
     textoResultado = introduccion.value.replaceAll(letrasEncriptadas, (match) => {
         // Reemplazamos cada cadena encriptada según el mapa invertido
@@ -103,4 +123,5 @@ function copiar(){
     .catch(err => {
         console.error('Error al copiar:', err)
     })
+    addBoton.innerHTML = "Copiado";
 }
